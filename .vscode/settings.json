@@ -1,0 +1,17 @@
+{
+    "css.lint.unknownAtRules": "ignore",
+    "files.associations": {
+        "**/trace": "plaintext"
+    },
+    "files.exclude": {
+        "**/.next": true
+    },
+    "search.exclude": {
+        "**/.next": true
+    },
+    "python.testing.pytestArgs": [
+        "public"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
