@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
 import connectToDatabase from "@/lib/mongodb";
 import Product from "@/models/Product";
 import { saveImage } from "@/lib/upload";
@@ -9,11 +8,6 @@ export async function PATCH(
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const session = await auth();
-        if (!session || (session.user as any)?.role !== "admin") {
-            return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-        }
-
         const { id } = await params;
         const data = await req.json();
 
@@ -57,10 +51,7 @@ export async function DELETE(
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const session = await auth();
-        if (!session || (session.user as any)?.role !== "admin") {
-            return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-        }
+        
 
         const { id } = await params;
 

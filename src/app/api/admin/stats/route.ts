@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
 import connectToDatabase from "@/lib/mongodb";
 import Order from "@/models/Order";
 import Product from "@/models/Product";
@@ -7,10 +6,6 @@ import User from "@/models/User";
 
 export async function GET() {
     try {
-        const session = await auth();
-        if (!session || (session.user as any)?.role !== "admin") {
-            return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-        }
 
         await connectToDatabase();
 

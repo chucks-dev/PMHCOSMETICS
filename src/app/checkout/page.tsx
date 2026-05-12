@@ -192,7 +192,6 @@ export default function CheckoutPage() {
                             <section>
                                 <div className="flex items-center justify-between mb-6">
                                     <h2 className="text-2xl font-serif text-secondary">Contact Information</h2>
-                                    <p className="text-xs text-muted">Need to save your details? <button type="button" onClick={() => setCheckoutStep("auth_prompt")} className="text-accent hover:underline font-bold">Sign In</button></p>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <input

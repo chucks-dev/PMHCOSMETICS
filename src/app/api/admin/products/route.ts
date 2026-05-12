@@ -1,15 +1,11 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
 import connectToDatabase from "@/lib/mongodb";
 import Product from "@/models/Product";
 import { saveImage } from "@/lib/upload";
 
 export async function GET() {
     try {
-        const session = await auth();
-        if (!session || (session.user as any)?.role !== "admin") {
-            return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-        }
+    
 
         await connectToDatabase();
         const products = await Product.find().sort({ createdAt: -1 });
@@ -22,11 +18,6 @@ export async function GET() {
 
 export async function POST(req: Request) {
     try {
-        const session = await auth();
-        if (!session || (session.user as any)?.role !== "admin") {
-            return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-        }
-
         await connectToDatabase();
         const data = await req.json();
 
